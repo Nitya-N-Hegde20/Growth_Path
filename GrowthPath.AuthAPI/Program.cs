@@ -4,6 +4,7 @@ using GrowthPath.AuthAPI.Models;
 using GrowthPath.AuthAPI.Service;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Web.Http.Cors;
 
 namespace GrowthPath.AuthAPI
 {
@@ -26,6 +27,7 @@ namespace GrowthPath.AuthAPI
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
