@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System.Web.Http.Cors;
+
 
 namespace GrowthPath.FeedbackAPI
 {
@@ -41,7 +43,7 @@ namespace GrowthPath.FeedbackAPI
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
-
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
